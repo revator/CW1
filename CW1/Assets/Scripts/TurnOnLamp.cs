@@ -6,16 +6,16 @@ public class TurnOnLamp : MonoBehaviour
 {
 
     // Variables
-    public GameObject lampLight;
+    public GameObject[] lampLight;
     public Light directionalLight;
 
     // Use this for initialization
     void Start()
     {
-
-        lampLight = GameObject.Find("LAt_Light");
-        lampLight.SetActive(false);
-        print("I OWORk");
+        foreach (GameObject lampLight in lampLight)
+        {
+            lampLight.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +28,10 @@ public class TurnOnLamp : MonoBehaviour
     {
         if (directionalLight.intensity <= 0.05f)
         {
-            lampLight.SetActive(true);
+            foreach(GameObject lampLight in lampLight)
+            {
+                lampLight.SetActive(true);
+            }
         }
     }
 }
